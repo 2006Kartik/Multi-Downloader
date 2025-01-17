@@ -1,0 +1,27 @@
+name: Download YouTube Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      youtube_link:
+        description: 'YouTube Video Link'
+        required: true
+        type: string
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install yt-dlp
+        run: sudo apt install yt-dlp
+
+      - name: Run Download Script
+        env:
+          YOUTUBE_LINK: ${{ github.event.inputs.youtube_link }}
+        run: |
+          chmod +x download_video.sh
+          ./download_video.sh
