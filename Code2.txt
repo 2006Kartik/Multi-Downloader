@@ -1,173 +1,116 @@
-Experiment no : 04
-Aim:  Array Implementation Of Circular Queue.
-Objective:
-To understand the concept and working of a circular queue using array representation.
-To implement enqueue, dequeue, and display operations using a menu-driven switch case  program in C.
-To handle overflow and underflow conditions efficiently for optimal memory utilization.
-Theory:
-   A circular queue using array is a linear data structure that follows the FIFO (First In First Out) principle, where the last position of the array is logically connected to the first position to form a circle. Unlike a simple linear queue, a circular queue efficiently utilizes memory by reusing the vacant spaces created after deletion. The queue operations such as enqueue, dequeue, and display are performed using two pointers, front and rear, and the program uses a menu-driven switch-case structure to allow user interaction. Overflow and underflow conditions are properly handled, making the circular queue suitable for applications like CPU scheduling, buffering, and memory management.                                  
+Experiment No:7 
+                                                   Prime Number Analyzer 
+                                                            Program:7.1 
+Aim: Using function, write a Python program to analyze whether the input 
+number is prime or not. 
+Code: 
+n = int (input ("Enter the no ")) 
+def prime (): 
+    c = 0 
+    for i in range (2, n): 
+        if (n % i == 0): 
+            c = c + 1 
+            break 
+    if (c == 0 and n! = 1): 
+        print(f"{n} is a prime number.") 
+    else: 
+        print(f"{n} is a not prime number.") 
+prime () 
+
+Program 7.2 
+Aim: 
+Code: 
+n = int (input ("Enter a number: ")) 
+if n*n - n == 1: 
+print(f"{n} is a prime number.") 
+else: 
+print(f"{n} is not a prime number.")
+
+
+
+
+Experiment No:8 
+                                          Simple calculator using Functions  
+                                                         Program 8.1 
+Aim: Implement a simple Python calculator using functions for addition, 
+subtraction, multiplication and division. 
+Code: 
+x=int (input ("Enter 1st number ")) 
+y=int (input ("Enter 2nd number ")) 
+def add (): 
+    z=x + y 
+    print (x," +" y,"=", z) 
+add () 
+def sub (): 
+    z=x-y 
+    print (x,"-", y,"=", z) 
+sub () 
+def mul (): 
+    z=x*y 
+    print (x,"*", y,"=", z) 
+mul () 
+def div (): 
+    z=x/y 
+    print (x,"/", y,"=", z) 
+div () 
+
+
+
+
+Experiment 11: Basic Exception Handling 
+Aim: To implement division with exception handling for ZeroDivisionError and 
+ValueError. 
+Code : 
+def divide_numbers(): 
+    try: 
+        num1 = float(input("Enter the first number: ")) 
+        num2 = float(input("Enter the second number: ")) 
+        result = num1 / num2 
+    except ValueError: 
+        print("Invalid input! Please enter numeric values.") 
+    except ZeroDivisionError: 
+        print("Error! Division by zero is not allowed.") 
+    else: 
+        print(f"The result of dividing {num1} by {num2} is: {result}") 
  
-        Algorithms:
-      1.Enqueue Operation
-Read the value to be inserted.
-If (rear + 1) % MAX == front, then
-                 Print "Queue Overflow"
-     Go back to menu.
-      3.Else
-If front == -1, then
-Set front = 0
-Set rear = 0
-Else
-Set rear = (rear + 1) % MAX
-     4.  Insert the value at queue[rear].
-5.  Display element inserted message.
-6.  Return to menu.
-      2. Dequeue Operation
-If front == -1, then
-Print "Queue Underflow"
-Go back to menu.
-Else
-Display the element at queue[front] as deleted.
-If front == rear, then
-Set front = -1
-Set rear = -1
-Else
-Set front = (front + 1) % MAX
-Return to menu.
-
-      3. Display Operation
-          1.  If front == -1, then
-   Print "Queue is Empty".
-         2.  Else
-        Set i = front
-  Repeat
-Print queue[i]
-If i == rear, then stop loop
-Else set i = (i + 1) % MAX
-        3. Return to menu.
-
-CODE:
-#include <stdio.h> 
-#include <conio.h> 
- 
-#define MAX 5 
- 
-int queue[MAX]; 
-int front = -1, rear = -1; 
- 
-void enqueue(int value) 
- {    
-     if ((rear + 1) % MAX == front)  
-    {         
-         printf("\nQueue Overflow!"); 
-    }  
-    else 
-   {        
-      if (front == -1)  
-     {           
-        front = 0;           
-       rear = 0; 
-    }  
-   else  
-   {             
-        rear = (rear + 1) % MAX; 
-    } 
-        queue[rear] = value;         
-        printf("\n%d inserted", value); 
-    } 
-} 
- 
-void dequeue() 
- {    
-     if (front == -1)  
-    {         
-         printf("\nQueue Underflow!"); 
-    }  
-    else  
-     {        
-         printf("\n%d deleted", queue[front]);        
-         if (front == rear)  
-    {            
-        front = rear = -1;                                                       // Reset queue         
-     }
-     else
-    {            
-        front = (front + 1) % MAX; 
-     } 
-    } 
-}  
-void display()
- { 
-    int i;     
-    if (front == -1)  
-   {         
-       printf("\nQueue is Empty!"); 
-    }  
-    else 
-     {        
-          printf("\nQueue elements:\n");        
-           i = front;         
-           while (1) 
-          {             
-              printf("%d ", queue[i]);            
-               if (i == rear)                
-               break;          
-               i = (i + 1) % MAX; 
-        } 
-    } 
-} 
- void main()
- {     
-    int choice, value;    
-   clrscr();    
-    while (1)  
-   {         
-        printf("\n\n--- CIRCULAR QUEUE MENU ---");        
-        printf("\n1. Enqueue");         
-        printf("\n2. Dequeue");        
-        printf("\n3. Display");         
-        printf("\n4. Exit");        
-        printf("\nEnter your choice: ");        
-       scanf("%d", &choice); 
- 
-        switch (choice)  
-{ 
-            case 1: 
-             printf("Enter value: ");             
-             scanf("%d", &value);                
-             enqueue(value);                
-             break; 
-             case 2:                
-             dequeue();                
-             break; 
-             case 3:                
-             display();                
-             break; 
-             case 4:                 
-             exit(0); 
-             default: 
-                printf("\nInvalid Choice!"); 
-        } 
-    } 
-    getch(); 
-} 
- 
-OUTPUT:
-d
+divide_numbers()
 
 
-Conclusion: 
-Thus we successfully implemented  the circular queue using array efficiently manages data by reusing memory space and provides smooth insertion and deletion operations through a menu-driven program.
+
+
+Experiment 18: Statistical Operations 
+Aim: To calculate mean, median, standard deviation, and variance using 
+NumPy. 
+Code: 
+import numpy as np 
+data = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]) 
+print("Mean:", np.mean(data)) 
+print("Median:", np.median(data)) 
+print("Standard Deviation:", np.std(data)) 
+print("Variance:", np.var(data)) 
+print("Correlation Coefficient Matrix:\n", np.corrcoef(data))
 
 
 
 
 
-
-
-
-
-
-
-
-
+Experiment 17: Creating and Manipulating Arrays 
+Aim: To create NumPy arrays and perform element-wise and vector operations. 
+Code 17.1: Array Manipulation 
+import numpy as np 
+# Creating 1D, 2D, and 3D arrays 
+array_1d = np.array([1, 2, 3, 4, 5]) 
+array_2d = np.array([[1, 2, 3], [4, 5, 6]]) 
+array_3d = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]]) 
+print("1D Array:", array_1d) 
+print("2D Array:\n", array_2d) 
+print("3D Array: \n", array_3d) 
+# Accessing and Slicing 
+element = array_2d[1, 2] # Accessing element at row 1, column 2 
+print("Element at (1, 2): ", element) 
+row_slice = array_2d[1, :] # Entire second row 
+print("Second row:", row_slice) 
+column_slice = array_2d[:, 1] # Entire second column 
+print("Second column:", column_slice) 
+sub_array = array_2d[0:2, 1:3] # Sub-array from rows 0-1 and columns 1-2 
+print("Sub-array:\n", sub_array)
